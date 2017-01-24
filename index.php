@@ -23,6 +23,8 @@ $stu = rand(1, 5);
 $fac = rand(1, 5);
 $adm = rand(1, 5);
 
+
+
 $sum = $stu + $fac + $adm;
 
 $random   = new Randomize();
@@ -37,8 +39,9 @@ $userArray = $container->getUsersArray();
 
 for ($i = 0; $i < $sum; $i++) {
     $getUser = array_pop($userArray);
-    echo $getUser->name.PHP_EOL;
-   //$random->run_class_methods($getUser);
+    //echo $getUser->name.PHP_EOL;
+    $run = rand(0, 4);
+    $random->run_class_methods($getUser, $run);
 }
 //print_r(($container->getUsersArray()));
 //$userArray = $container->getUsersArray();

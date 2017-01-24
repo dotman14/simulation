@@ -63,7 +63,7 @@ class UserContainer
             self::$users[] = $admin;
         }
 
-        shuffle(self::$users);
+        //shuffle(self::$users);
     }
 
     /**
