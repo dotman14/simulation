@@ -58,12 +58,12 @@ class UserContainer
 
         for ($k = 0; $k < $this->noOfAdmin; $k++)
         {
-            $admin = new Faculty();
+            $admin = new Admin();
             $admin->name = "admin".$k;
             self::$users[] = $admin;
         }
 
-        //shuffle(self::$users);
+        shuffle(self::$users);
     }
 
     /**

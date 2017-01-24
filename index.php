@@ -19,9 +19,9 @@ $faculty = new Faculty();
 
 echo "I'm a " . get_class($student) . " and I have " . $student->get_method_count() . " methods" . "\n";
 
-$stu = rand(1, 5);
-$fac = rand(1, 5);
-$adm = rand(1, 5);
+$stu = random_int(4, 15);
+$fac = random_int(2, 10);
+$adm = random_int(2, 5);
 
 $sum = $stu + $fac + $adm;
 
@@ -38,7 +38,7 @@ $userArray = $container->getUsersArray();
 for ($i = 0; $i < $sum; $i++) {
     $getUser = array_pop($userArray);
     //echo $getUser->name.PHP_EOL;
-    $random->run_class_methods($getUser, rand(0, 4));
+    $random->run_class_methods($getUser, random_int(0, 5));
 }
 //print_r(($container->getUsersArray()));
 //$userArray = $container->getUsersArray();
