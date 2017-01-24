@@ -1,1 +1,64 @@
-<?php/** * Created by PhpStorm. * User: dotun * Date: 1/20/17 * Time: 1:27 PM *//** * This class is used to perform all random functions for User super class and other subclasses. */require_once('Student.php');require_once('Admin.php');require_once('Faculty.php');require_once('User.php');class Randomize{    /**     * @param $object     * @param $runMethods     * @method Randomize runs a random method from a list of methods generated from get_methods class     * We get a random index from the array returned for the specific class...(Each class has varying number of methods/actions user can perform)     * Then we call the method corresponding to the index returned by rand(), using the class object and PHP's call_user_function.     * This in turn execute the method.     */    public function run_class_methods($object, $runMethods)    {        if ($object instanceof Student)        {            echo $object->login().PHP_EOL;            for($i = 0; $i < $runMethods; $i++)            {                $methodIndex = mt_rand(0, count($object->get_methods()) - 1);                echo call_user_func([$object, $object->get_methods()[$methodIndex]]) . PHP_EOL;            }            echo $object->logout().PHP_EOL;        }        if ($object instanceof Admin)        {            echo $object->login().PHP_EOL;            for($i = 0; $i < $runMethods; $i++)            {                $methodIndex = mt_rand(0, count($object->get_methods()) - 1);                echo call_user_func([$object, $object->get_methods()[$methodIndex]]) . PHP_EOL;            }            echo $object->logout().PHP_EOL;        }        if ($object instanceof Faculty)        {            echo $object->login().PHP_EOL;            for($i = 0; $i < $runMethods; $i++)            {                $methodIndex = mt_rand(0, count($object->get_methods()) - 1);                echo call_user_func([$object, $object->get_methods()[$methodIndex]]) . PHP_EOL;            }            echo $object->logout().PHP_EOL;        }    }}
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: dotun
+ * Date: 1/20/17
+ * Time: 1:27 PM
+ */
+
+/**
+ * This class is used to perform all random functions for User super class and other subclasses.
+ */
+
+require_once('Student.php');
+require_once('Admin.php');
+require_once('Faculty.php');
+require_once('User.php');
+
+class Randomize
+{
+    /**
+     * @param $object
+     * @param $runMethods
+     * @method Randomize runs a random method from a list of methods generated from get_methods class
+     * We get a random index from the array returned for the specific class...(Each class has varying number of methods/actions user can perform)
+     * Then we call the method corresponding to the index returned by rand(), using the class object and PHP's call_user_function.
+     * This in turn execute the method.
+     */
+    public function run_class_methods($object, $runMethods)
+    {
+        if ($object instanceof Student)
+        {
+            echo $object->login().PHP_EOL;
+            for($i = 0; $i < $runMethods; $i++)
+            {
+                $methodIndex = mt_rand(0, count($object->get_methods()) - 1);
+                echo call_user_func([$object, $object->get_methods()[$methodIndex]]) . PHP_EOL;
+            }
+            echo $object->logout().PHP_EOL;
+        }
+
+        if ($object instanceof Admin)
+        {
+            echo $object->login().PHP_EOL;
+            for($i = 0; $i < $runMethods; $i++)
+            {
+                $methodIndex = mt_rand(0, count($object->get_methods()) - 1);
+                echo call_user_func([$object, $object->get_methods()[$methodIndex]]) . PHP_EOL;
+            }
+            echo $object->logout().PHP_EOL;
+        }
+
+        if ($object instanceof Faculty)
+        {
+            echo $object->login().PHP_EOL;
+            for($i = 0; $i < $runMethods; $i++)
+            {
+                $methodIndex = mt_rand(0, count($object->get_methods()) - 1);
+                echo call_user_func([$object, $object->get_methods()[$methodIndex]]) . PHP_EOL;
+            }
+            echo $object->logout().PHP_EOL;
+        }
+    }
+}
