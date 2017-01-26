@@ -7,11 +7,19 @@
  * Time: 11:00 AM
  */
 
+//$start = microtime(true);
+//for ($x=0;$x<10000;$x++) {}
+//$end = microtime(true);
+//echo 'It took ' . ($end-$start) . ' seconds!';
+
+require_once('Metrics.php');
+
 class Student implements User
 {
     private $noOfMethods;
     public static $countMethodCalls;
     public $name;
+    public $metrics = array();
 
     public function __construct()
     {

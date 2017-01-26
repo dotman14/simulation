@@ -12,6 +12,7 @@ class Admin implements User
     public static $countMethodCalls;
     private $noOfMethods;
     public $name;
+    public $metrics = array();
 
     public function __construct()
     {

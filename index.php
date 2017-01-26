@@ -31,17 +31,12 @@ $container    = new UserContainer($stu, $fac, $adm);
 $container->insert_users();
 $userArray = $container->getUsersArray();
 
-//print_r($student->get_methods());
-//print_r($faculty->get_methods());
-//print_r($admin->get_methods());
+//$load = sys_getloadavg();
+//print_r($load);
 
 for ($i = 0; $i < $sum; $i++) {
     $getUser = array_pop($userArray);
-    //echo $getUser->name.PHP_EOL;
+    echo $getUser->name.PHP_EOL;
     $random->run_class_methods($getUser, random_int(0, 5));
+    print_r($getUser->metrics);
 }
-//print_r(($container->getUsersArray()));
-//$userArray = $container->getUsersArray();
-
-
-//unset($student);
