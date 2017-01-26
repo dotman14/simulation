@@ -12,7 +12,7 @@ class Admin implements User
     public static $countMethodCalls;
     private $noOfMethods;
     public $name;
-    public $metrics = array();
+    public static $metrics = array();
 
     public function __construct()
     {
@@ -49,13 +49,19 @@ class Admin implements User
         return "admin view_report";
     }
 
+
+    public function get_metrics()
+    {
+        return self::$metrics;
+    }
+
     /**
      * @return array of methods available in a class;
      */
     public function get_methods()
     {
         $allMethods    = array();
-        $removeMethods = array('get_method_count','get_methods', '__construct', 'login', 'logout');
+        $removeMethods = array('get_method_count','get_methods', '__construct', 'login', 'logout', 'get_metrics');
 
         foreach (get_class_methods($this) as $method)
             $allMethods[] = $method;

@@ -25,4 +25,9 @@ interface User
      * @return array of methods available in a class;
      */
     public function get_methods();
+
+    /**
+     * @return array of metrics taking for a class.
+     */
+    public function get_metrics();
 }

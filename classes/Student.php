@@ -12,14 +12,12 @@
 //$end = microtime(true);
 //echo 'It took ' . ($end-$start) . ' seconds!';
 
-require_once('Metrics.php');
-
 class Student implements User
 {
     private $noOfMethods;
     public static $countMethodCalls;
     public $name;
-    public $metrics = array();
+    public static $metrics = array();
 
     public function __construct()
     {
@@ -65,13 +63,18 @@ class Student implements User
         return "student view_survey";
     }
 
+    public function get_metrics()
+    {
+        return self::$metrics;
+    }
+
     /**
      * @return array of methods available in a class;
      */
     public function get_methods()
     {
         $allMethods    = array();
-        $removeMethods = array('get_method_count','get_methods', '__construct', 'login', 'logout');
+        $removeMethods = array('get_method_count','get_methods', '__construct', 'login', 'logout', 'get_metrics');
 
         foreach (get_class_methods($this) as $method)
             $allMethods[] = $method;
@@ -80,9 +83,4 @@ class Student implements User
 
         return array_values(array_flip($methods));
     }
-
-//    public function __destruct()
-//    {
-//        echo self::logout().PHP_EOL;
-//    }
 }

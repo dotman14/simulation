@@ -26,6 +26,8 @@ class Metrics
         $this->thinking = $thinking;
         $this->display = $display;
     }
+
+    //public
 }
 
 {

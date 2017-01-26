@@ -37,7 +37,7 @@ class Randomize
                 $methodIndex = mt_rand(0, count($object->get_methods()) - 1);
                 echo call_user_func([$object, $object->get_methods()[$methodIndex]]) . PHP_EOL;
                 $metrics = new Metrics($object->name, $object->get_methods()[$methodIndex], "cpu value", "io value", "network value", "thinking value", "display value");
-                $object->metrics[] = $metrics;
+                Student::$metrics[] = $metrics;
             }
             echo $object->logout().PHP_EOL;
         }
@@ -50,7 +50,7 @@ class Randomize
                 $methodIndex = mt_rand(0, count($object->get_methods()) - 1);
                 echo call_user_func([$object, $object->get_methods()[$methodIndex]]) . PHP_EOL;
                 $metrics = new Metrics($object->name, $object->get_methods()[$methodIndex], "cpu value", "io value", "network value", "thinking value", "display value");
-                $object->metrics[] = $metrics;
+                Admin::$metrics[] = $metrics;
             }
             echo $object->logout().PHP_EOL;
         }
@@ -63,7 +63,7 @@ class Randomize
                 $methodIndex = mt_rand(0, count($object->get_methods()) - 1);
                 echo call_user_func([$object, $object->get_methods()[$methodIndex]]) . PHP_EOL;
                 $metrics = new Metrics($object->name, $object->get_methods()[$methodIndex], "cpu value", "io value", "network value", "thinking value", "display value");
-                $object->metrics[] = $metrics;
+                Faculty::$metrics[] = $metrics;
             }
             echo $object->logout().PHP_EOL;
         }

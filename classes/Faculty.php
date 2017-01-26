@@ -12,7 +12,7 @@ class Faculty implements User
     public static $countMethodCalls;
     private $noOfMethods;
     public $name;
-    public $metrics = array();
+    public static $metrics = array();
 
     public function __construct()
     {
@@ -82,7 +82,7 @@ class Faculty implements User
     public function get_methods()
     {
         $allMethods    = array();
-        $removeMethods = array('get_method_count','get_methods', '__construct', 'login', 'logout');
+        $removeMethods = array('get_method_count','get_methods', '__construct', 'login', 'logout', 'get_metrics');
 
         foreach (get_class_methods($this) as $method)
             $allMethods[] = $method;
@@ -90,5 +90,10 @@ class Faculty implements User
         $methods = array_diff_key(array_flip($allMethods), array_flip($removeMethods));
 
         return array_values(array_flip($methods));
+    }
+
+    public function get_metrics()
+    {
+        return self::$metrics;
     }
 }
