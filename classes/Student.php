@@ -17,6 +17,7 @@ class Student implements User
     private $noOfMethods;
     public static $countMethodCalls;
     public $name;
+    public $interArrivalTime;
     public static $metrics = array();
 
     public function __construct()
@@ -51,7 +52,12 @@ class Student implements User
     public function complete_survey()
     {
         self::$countMethodCalls++;
-        return "student complete_survey";
+        //return "student complete_survey";
+        $arr  = array();
+        $arr[0] = "cpu-value";
+        $arr[1] = "io-value";
+        //return "student view_survey";
+        return $arr;
     }
 
     /**
@@ -60,7 +66,11 @@ class Student implements User
     public function view_survey()
     {
         self::$countMethodCalls++;
-        return "student view_survey";
+        $arr  = array();
+        $arr[0] = "cpu-value";
+        $arr[1] = "io-value";
+        //return "student view_survey";
+        return $arr;
     }
 
     public function get_metrics()

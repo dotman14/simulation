@@ -21,21 +21,21 @@ class Randomize
 {
     /**
      * @param $object
-     * @param $runMethods
+     * @param $runMethod
      * @method Randomize runs a random method from a list of methods generated from get_methods class
      * We get a random index from the array returned for the specific class...(Each class has varying number of methods/actions user can perform)
      * Then we call the method corresponding to the index returned by rand(), using the class object and PHP's call_user_function.
      * This in turn execute the method.
      */
-    public function run_class_methods($object, $runMethods)
+    public function run_class_methods($object, $runMethod)
     {
         if ($object instanceof Student)
         {
             echo $object->login().PHP_EOL;
-            for($i = 0; $i < $runMethods; $i++)
+            for($i = 0; $i < $runMethod; $i++)
             {
                 $methodIndex = mt_rand(0, count($object->get_methods()) - 1);
-                echo call_user_func([$object, $object->get_methods()[$methodIndex]]) . PHP_EOL;
+                print_r(call_user_func([$object, $object->get_methods()[$methodIndex]]));
                 $metrics = new Metrics($object->name, $object->get_methods()[$methodIndex], "cpu value", "io value", "network value", "thinking value", "display value");
                 Student::$metrics[] = $metrics;
             }
@@ -45,7 +45,7 @@ class Randomize
         if ($object instanceof Admin)
         {
             echo $object->login().PHP_EOL;
-            for($i = 0; $i < $runMethods; $i++)
+            for($i = 0; $i < $runMethod; $i++)
             {
                 $methodIndex = mt_rand(0, count($object->get_methods()) - 1);
                 echo call_user_func([$object, $object->get_methods()[$methodIndex]]) . PHP_EOL;
@@ -58,7 +58,7 @@ class Randomize
         if ($object instanceof Faculty)
         {
             echo $object->login().PHP_EOL;
-            for($i = 0; $i < $runMethods; $i++)
+            for($i = 0; $i < $runMethod; $i++)
             {
                 $methodIndex = mt_rand(0, count($object->get_methods()) - 1);
                 echo call_user_func([$object, $object->get_methods()[$methodIndex]]) . PHP_EOL;

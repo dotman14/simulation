@@ -6,16 +6,36 @@
  * Date: 1/25/17
  * Time: 8:19 PM
  */
-class Scheduler
+class Scheduler extends SplStack
 {
-    const WINDOWS = 16;
-    public $available = true;
+    public $openWindows = array("window-1", "window-2","window-3", "window-4", "window-5", "window-6", "window-7");
+    public $closeWindows = array();
+    public $status = "idle";
+    public static $waitTime;
 
-    /**
-     * @param User $object
-     */
-    public function schedule_jobs(User $object)
+    public function __construct()
     {
 
+    }
+
+    /**
+     * @param  $objects
+     */
+    public function schedule_jobs($objects)
+    {
+        if(count($this->openWindows) > 0)
+        {
+            $windowIndex = rand(0, count($this->openWindows) - 1);
+            $windowInUse = $this->openWindows[$windowIndex];
+            echo $windowInUse . " serving " . $objects->name . " for " . $objects->interArrivalTime . " secs" . PHP_EOL;
+            if($windowInUse !== false) {
+                unset($this->openWindows[$windowIndex]);
+            }
+            sleep($objects->interArrivalTime);
+            $this->openWindows = array_values($this->openWindows);
+            array_push($this->openWindows, $windowInUse);
+        }
+        else
+            echo "Delay..\n";
     }
 }

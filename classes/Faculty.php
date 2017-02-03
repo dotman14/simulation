@@ -12,6 +12,7 @@ class Faculty implements User
     public static $countMethodCalls;
     private $noOfMethods;
     public $name;
+    public $interArrivalTime;
     public static $metrics = array();
 
     public function __construct()

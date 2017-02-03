@@ -40,12 +40,19 @@ class UserContainer
      */
     private static $users = array();
 
+
+    public static function compare($a, $b)
+    {
+        return $a->interArrivalTime > $b->interArrivalTime;
+    }
+
     public function insert_users()
     {
         for ($i = 0; $i < $this->noOfStudent; $i++)
         {
             $student = new Student();
             $student->name = "student".$i;
+            $student->interArrivalTime = rand(0, 5);
             self::$users[] = $student;
         }
 
@@ -53,6 +60,7 @@ class UserContainer
         {
             $faculty = new Faculty();
             $faculty->name = "faculty".$j;
+            $faculty->interArrivalTime = rand(0, 5);
             self::$users[] = $faculty;
         }
 
@@ -60,10 +68,11 @@ class UserContainer
         {
             $admin = new Admin();
             $admin->name = "admin".$k;
+            $admin->interArrivalTime = rand(0, 5);
             self::$users[] = $admin;
         }
 
-        shuffle(self::$users);
+        usort(self::$users, array('UserContainer','compare'));
     }
 
     /**

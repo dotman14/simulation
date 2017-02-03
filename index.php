@@ -12,12 +12,11 @@ require_once ('classes/Faculty.php');
 require_once ('classes/Admin.php');
 require_once ('classes/UserContainer.php');
 require_once ('classes/Randomize.php');
+require_once ('classes/Scheduler.php');
 
 $student = new Student();
 $admin   = new Admin();
 $faculty = new Faculty();
-
-//echo "I'm a " . get_class($student) . " and I have " . $student->get_method_count() . " methods" . "\n";
 
 $stu = random_int(4, 15);
 $fac = random_int(2, 10);
@@ -26,21 +25,31 @@ $adm = random_int(2, 5);
 $sum = $stu + $fac + $adm;
 
 $random   = new Randomize();
+$schedule = new Scheduler();
 
 $container    = new UserContainer($stu, $fac, $adm);
 $container->insert_users();
-$userArray = $container->getUsersArray();
+$userArray = array_reverse($container->getUsersArray());
 
-//$load = sys_getloadavg();
-//print_r($load);
-
-for ($i = 0; $i < $sum; $i++) {
+for ($i = 0; $i < $sum; $i++)
+{
     $getUser = array_pop($userArray);
-   //echo $getUser->name.PHP_EOL;
-    $random->run_class_methods($getUser, random_int(0, 5));
+    //echo $getUser->name . " " . $getUser->interArrivalTime.PHP_EOL;
+    $schedule->schedule_jobs($getUser);
+    //$random->run_class_methods($getUser, random_int(0, 5));
+    //echo $getUser->name.PHP_EOL;
+    //$random->run_class_methods($getUser, random_int(0, 5));
     //print_r($getUser->metrics);
 }
 
-print_r($student->get_metrics());
-print_r($faculty->get_metrics());
-print_r($admin->get_metrics());
+
+//$schedule->schedule_jobs($userArray);
+//print_r($userArray);
+
+//print_r($schedule->pop());
+//print_r($schedule);
+//print_r($student->get_metrics());
+//print_r($faculty->get_metrics());
+//print_r($admin->get_metrics());
+
+
