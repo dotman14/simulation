@@ -10,7 +10,7 @@
 /**
  * This class is used to perform all random functions for User super class and other subclasses.
  */
-
+declare(strict_types=1);
 require_once('Student.php');
 require_once('Admin.php');
 require_once('Faculty.php');
@@ -27,7 +27,7 @@ class Randomize
      * Then we call the method corresponding to the index returned by rand(), using the class object and PHP's call_user_function.
      * This in turn execute the method.
      */
-    public function run_class_methods($object, $runMethod)
+    public function run_class_methods($object, int $runMethod)
     {
         if ($object instanceof Student)
         {
