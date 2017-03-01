@@ -48,29 +48,42 @@ class UserContainer
 
     public function insert_users()
     {
-        for ($i = 0; $i < $this->noOfStudent; $i++)
+
+        $studentArrivalTime = 0;
+        //$facultyArrivalTime = 0;
+       // $adminArrivalTime = 0;
+        while(true)
         {
+            $studentArrivalTime += 3;
             $student = new Student();
-            $student->name = "student".$i;
-            $student->interArrivalTime = rand(0, 5);
+            $student->name = "student".$studentArrivalTime;
             self::$users[] = $student;
+            $student->interArrivalTime = $studentArrivalTime;
+            sleep(3);
         }
+//        for ($i = 0; $i < $this->noOfStudent; $i++)
+//        {
+//            $student = new Student();
+//            $student->name = "student".$i;
+//            $student->interArrivalTime = rand(0, 5);
+//            self::$users[] = $student;
+//        }
 
-        for ($j = 0; $j < $this->noOfFaculty; $j++)
-        {
-            $faculty = new Faculty();
-            $faculty->name = "faculty".$j;
-            $faculty->interArrivalTime = rand(0, 5);
-            self::$users[] = $faculty;
-        }
-
-        for ($k = 0; $k < $this->noOfAdmin; $k++)
-        {
-            $admin = new Admin();
-            $admin->name = "admin".$k;
-            $admin->interArrivalTime = rand(0, 5);
-            self::$users[] = $admin;
-        }
+//        for ($j = 0; $j < $this->noOfFaculty; $j++)
+//        {
+//            $faculty = new Faculty();
+//            $faculty->name = "faculty".$j;
+//            $faculty->interArrivalTime = rand(0, 5);
+//            self::$users[] = $faculty;
+//        }
+//
+//        for ($k = 0; $k < $this->noOfAdmin; $k++)
+//        {
+//            $admin = new Admin();
+//            $admin->name = "admin".$k;
+//            $admin->interArrivalTime = rand(0, 5);
+//            self::$users[] = $admin;
+//        }
 
         usort(self::$users, array('UserContainer','compare'));
     }
