@@ -48,10 +48,10 @@ class UserContainer
 
     public function insert_users()
     {
-
+        $pid = pcntl_fork();
         $studentArrivalTime = 0;
-        //$facultyArrivalTime = 0;
-       // $adminArrivalTime = 0;
+        $facultyArrivalTime = 0;
+        $adminArrivalTime = 0;
         while(true)
         {
             $studentArrivalTime += 3;
@@ -60,6 +60,29 @@ class UserContainer
             self::$users[] = $student;
             $student->interArrivalTime = $studentArrivalTime;
             sleep(3);
+            print_r(self::$users);
+        }
+
+        while(true)
+        {
+            $facultyArrivalTime += 10;
+            $faculty = new Faculty();
+            $faculty->name = "faculty".$facultyArrivalTime;
+            self::$users[] = $faculty;
+            $faculty->interArrivalTime = $facultyArrivalTime;
+            sleep(10);
+            print_r(self::$users);
+        }
+
+        while(true)
+        {
+            $adminArrivalTime += 30;
+            $admin = new Admin();
+            $admin->name = "admin".$adminArrivalTime;
+            self::$users[] = $admin;
+            $admin->interArrivalTime = $adminArrivalTime;
+            sleep(30);
+            print_r(self::$users);
         }
 //        for ($i = 0; $i < $this->noOfStudent; $i++)
 //        {
